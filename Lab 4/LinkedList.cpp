@@ -24,6 +24,7 @@ void insertAtFront(struct Node** head, int new_data)
     //return head;
 }
 ////
+
 void insertAfter(struct Node* head, int key, int newData)
 {
     struct Node* curr = head;
@@ -40,119 +41,6 @@ void insertAfter(struct Node* head, int key, int newData)
     newNode->next = curr->next;
     curr->next = newNode;
 }
-////
-//void insertBefore(struct Node** head, int key, int newData)
-//{
-//    struct Node* curr = *head, *prev;
-//
-//    if(curr->data == key){
-//        struct Node* newNode = createNode(newData);
-//        newNode->next = curr;
-//        *head = newNode;
-//    }
-//
-//    while (curr != NULL) {
-//        if (curr->data == key){
-//            //break;
-//            struct Node* newNode = createNode(newData);
-//            newNode->next = curr;
-//            prev->next = newNode;
-//        }
-//        prev = curr;
-//        curr = curr->next;
-//    }
-//
-//    if (curr == NULL)
-//        return;
-//
-////    struct Node* newNode = createNode(newData);
-////    newNode->next = curr;
-////    prev->next = newNode;
-//}
-//////
-//////
-//void insertAtPosition(struct Node** head, int position, int data)
-//{
-//    struct Node* newNode = createNode(data);
-//
-//    if (position == 1) {
-//        newNode->next = *head;
-//        *head = newNode;
-//        return;
-//    }
-//
-//    struct Node* current = *head;
-//    for (int i = 1; i < position - 1 && current != NULL;  ++i) {
-//        current = current->next;
-//    }
-//
-//    if (current == NULL) {
-//        printf("Position is out of bounds.\n");
-//        free(newNode);
-//    }
-//
-//    newNode->next = current->next;
-//    current->next = newNode;
-//}
-//////
-//////
-//void insertAtEnd(struct Node** head, int new_data)
-//{
-//    struct Node* new_node = createNode(new_data);
-//
-//    if (*head == NULL) {
-//        insertAtFront(&*head,new_data);
-//    }
-//    else{
-//         struct Node* last = *head;
-//
-//        while (last->next != NULL) {
-//            last = last->next;
-//        }
-//        last->next = new_node;
-//    }
-//}
-//
-//
-//void deleteNode(struct Node **head,int data)
-//{
-//   struct Node *temp,*curr;
-//
-//   if((*head)->data == data){
-//    temp = *head;
-//    *head = (*head)->next;
-//    free(temp);
-//    return;
-//   }
-//    curr = *head;
-//   while(curr->next->data != data)
-//      curr = curr->next;
-//   temp = curr->next;
-//   curr->next = curr->next->next;
-//   free(temp);
-//   printf("%d is deleted",data);
-//}
-//
-//
-//void update(struct Node *head,int data1,int data2)
-//{
-//   while(head->data != data1)
-//      head = head->next;
-//   head->data=data2;
-//   printf("%d updated!\n",data1);
-//}
-//
-//
-//int count(struct Node *head)
-//{
-//   int cnt=1;
-//   while(head->next != NULL)
-//   {
-//      cnt++;
-//      head = head->next;
-//   }
-//   return cnt;
-//}
 
 
 void printList(struct Node* head)
@@ -198,9 +86,9 @@ int main()
     insertAtFront(&head, data);
     printList(head); //printf("%d\n",head->data);
 //
-//    int key = 3, newData = 6;// Insert a new node with data 4 after the node having data 3
-//    insertAfter(head, key, newData);
-//    printList(head);
+    int key = 3, newData = 6;// Insert a new node with data 4 after the node having data 3
+    insertAfter(head, key, newData);
+    printList(head);
 
 //    int key = 3, newData = 4;// Insert a new node with data 4 after the node having data 3
 //    insertBefore(&head, key, newData);
