@@ -23,7 +23,6 @@ void insertAtFront(struct Node** head, int new_data)
     *head = new_node;
     //return head;
 }
-////
 
 void insertAfter(struct Node* head, int key, int newData)
 {
@@ -42,6 +41,72 @@ void insertAfter(struct Node* head, int key, int newData)
     curr->next = newNode;
 }
 
+void insertBefore(struct Node** head, int key, int newData)
+{
+    struct Node* curr = *head, *prev;
+
+    if(curr->data == key){
+        struct Node* newNode = createNode(newData);
+        newNode->next = curr;
+        *head = newNode;
+    }
+
+    while (curr != NULL) {
+        if (curr->data == key){
+            break;
+        }
+        prev = curr;
+        curr = curr->next;
+    }
+
+    if (curr == NULL)
+        return;
+
+    struct Node* newNode = createNode(newData);
+    newNode->next = curr;
+    prev->next = newNode;
+}
+
+void insertAtPosition(struct Node** head, int position, int data)
+{
+    struct Node* newNode = createNode(data);
+
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    struct Node* current = *head;
+    for (int i = 1; i < position - 1 && current != NULL;  ++i) {
+        current = current->next;
+    }
+
+    if (current == NULL) {
+        printf("Position is out of bounds.\n");
+        free(newNode);
+    }
+
+    newNode->next = current->next;
+    current->next = newNode;
+}
+
+void insertAtEnd(struct Node** head, int new_data)
+{
+    struct Node* new_node = createNode(new_data);
+
+    if (*head == NULL) {
+        insertAtFront(head,new_data);
+    }
+    else{
+         struct Node* last = *head;
+
+        while (last->next != NULL) {
+            last = last->next;
+        }
+        last->next = new_node;
+    }
+}
 
 void printList(struct Node* head)
 {
