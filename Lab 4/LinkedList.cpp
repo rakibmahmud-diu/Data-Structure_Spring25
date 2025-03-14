@@ -108,6 +108,44 @@ void insertAtEnd(struct Node** head, int new_data)
     }
 }
 
+void deleteNode(struct Node **head,int data)
+{
+   struct Node *temp,*curr;
+
+   if((*head)->data == data){
+    temp = *head;
+    *head = (*head)->next;
+    free(temp);
+    return;
+   }
+   curr = *head;
+   while(curr->next->data != data)
+      curr = curr->next;
+   temp = curr->next;
+   curr->next = curr->next->next;
+   free(temp);
+   printf("%d is deleted",data);
+}
+
+void update(struct Node *head,int data1,int data2)
+{
+   while(head->data != data1)
+      head = head->next;
+   head->data=data2;
+   printf("%d updated!\n",data1);
+}
+
+int count(struct Node *head)
+{
+   int cnt=1;
+   while(head->next != NULL)
+   {
+      cnt++;
+      head = head->next;
+   }
+   return cnt;
+}
+
 void printList(struct Node* head)
 {
     struct Node* curr = head;
